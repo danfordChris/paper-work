@@ -1,20 +1,23 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
 
-# Run and deploy your AI Studio app
+# paper-work
 
-This contains everything you need to run your app locally.
+Immersive Vite/React landing page for `danfordchris`, built as a single scroll-driven composition with staged scenes, paper textures, and editorial UI motion.
 
-View your app in AI Studio: https://ai.studio/apps/2e6e906b-3e4d-4caf-a1f1-b4e57c093353
+## Commands
 
-## Run Locally
+1. Install dependencies: `npm install`
+2. Start local dev server: `npm run dev`
+3. Run type checks: `npm run lint`
+4. Build production bundle: `npm run build`
 
-**Prerequisites:**  Node.js
+## Docs And Workflow
 
+- Workflow authority: `.agents/workflows/workflow-contract/spec/*`
+- Repo instructions: `AGENTS.md`
+- Design authority: `docs/design/`
+- Execution planning: `docs/implementation/`
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Notes
+
+- The current frontend path is static and scene-driven.
+- Gemini and AI Studio scaffolding still exists in repo metadata and env examples, but it is not part of the rendered `src/` runtime path.

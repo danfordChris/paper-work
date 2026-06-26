@@ -43,10 +43,10 @@ export default function FooterScene({ progress }: FooterSceneProps) {
       <div className="w-full max-w-6xl border-t border-zinc-200/80 pt-6 flex flex-col sm:flex-row justify-between items-start gap-4">
         <div>
           <span className="font-mono text-[9px] text-zinc-400 uppercase tracking-widest block mb-1">
-            System Terminal Complete
+            Portfolio Index Complete
           </span>
           <span className="font-serif italic text-sm text-zinc-600">
-            "Your workspace is clean. Rest easy."
+            "Selected work, career history, and public links in one scroll."
           </span>
         </div>
 
@@ -65,48 +65,48 @@ export default function FooterScene({ progress }: FooterSceneProps) {
           {/* Column 1 */}
           <div className="flex flex-col gap-2.5">
             <h4 className="font-mono text-[9px] text-[#9d8d73] uppercase tracking-widest border-b border-zinc-100 pb-1">
-              PRODUCT
+              WORK
             </h4>
-            <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors flex items-center gap-0.5">
-              Features <ArrowUpRight className="w-3 h-3 text-zinc-400" />
+            <a href="https://github.com/danfordChris/" target="_blank" rel="noreferrer" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors flex items-center gap-0.5">
+              GitHub <ArrowUpRight className="w-3 h-3 text-zinc-400" />
             </a>
-            <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
-              Pricing Details
+            <a href="https://play.google.com/store/apps/details?id=tz.bantu.soko.android&pcampaignid=web_share" target="_blank" rel="noreferrer" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
+              Bantu Soko
             </a>
-            <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
-              Interactive Room
+            <a href="https://play.google.com/store/apps/details?id=com.oceangroup.ocean&pcampaignid=web_share" target="_blank" rel="noreferrer" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
+              Ocean App
             </a>
           </div>
 
           {/* Column 2 */}
           <div className="flex flex-col gap-2.5">
             <h4 className="font-mono text-[9px] text-[#9d8d73] uppercase tracking-widest border-b border-zinc-100 pb-1">
-              COMPANY
+              ROLES
             </h4>
             <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
-              Our Vision
+              Full Stack
             </a>
             <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
-              The Stationery Lab
+              DevOps
             </a>
             <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
-              Careers
+              Mobile
             </a>
           </div>
 
           {/* Column 3 */}
           <div className="flex flex-col gap-2.5">
             <h4 className="font-mono text-[9px] text-[#9d8d73] uppercase tracking-widest border-b border-zinc-100 pb-1">
-              RESOURCES
+              HISTORY
             </h4>
             <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
-              Terms of Use
+              IPF Software
             </a>
             <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
-              Privacy Ledger
+              Freelancing
             </a>
             <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
-              Change Log
+              Trilabs
             </a>
           </div>
 
@@ -115,14 +115,14 @@ export default function FooterScene({ progress }: FooterSceneProps) {
             <h4 className="font-mono text-[9px] text-[#9d8d73] uppercase tracking-widest border-b border-zinc-100 pb-1">
               CHANNELS
             </h4>
-            <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors flex items-center gap-0.5">
-              X Desktop <ArrowUpRight className="w-3 h-3 text-zinc-400" />
+            <a href="https://x.com/Co24669" target="_blank" rel="noreferrer" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors flex items-center gap-0.5">
+              X <ArrowUpRight className="w-3 h-3 text-zinc-400" />
             </a>
-            <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
+            <a href="https://www.instagram.com/royz_chriss/" target="_blank" rel="noreferrer" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
               Instagram
             </a>
-            <a href="#" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
-              Contact Desk
+            <a href="https://www.linkedin.com/in/danford-chriss-438364240" target="_blank" rel="noreferrer" className="font-serif text-[13.5px] text-zinc-600 hover:text-ink hover:underline transition-colors">
+              LinkedIn
             </a>
           </div>
 
@@ -150,11 +150,11 @@ export default function FooterScene({ progress }: FooterSceneProps) {
           </div>
 
           <p className="font-serif italic text-xs leading-normal text-rose-950 mb-3.5">
-            "We build beautiful paper computers that feel warm, stationery, and organized."
+            "Practical products, real shipping, and a builder identity shaped by doing."
           </p>
 
           <span className="font-mono text-[8px] font-bold text-rose-600 bg-rose-100/85 px-1.5 py-0.5 rounded uppercase block text-center border border-rose-200">
-            POSTAGE GUARANTEED
+            SELECTED WORK
           </span>
         </div>
 
@@ -174,8 +174,8 @@ export default function FooterScene({ progress }: FooterSceneProps) {
 
       {/* Absolute Bottom copyright labels */}
       <div className="w-full max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-2 border-t border-zinc-100 pt-5 text-zinc-400 font-mono text-[8.5px]">
-        <span>DANFORDCHRIS COMPUTER, INC. © {new Date().getFullYear()}</span>
-        <span>RECREATION APPLET • ALL SYSTEM CHECKS SOLID</span>
+        <span>DANFORD CHRISS © {new Date().getFullYear()}</span>
+        <span>FULL STACK • DEVOPS • MOBILE</span>
       </div>
 
     </div>

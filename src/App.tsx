@@ -13,23 +13,31 @@ import PeopleScene from './components/PeopleScene';
 import SortingScene from './components/SortingScene';
 import DrawersScene from './components/DrawersScene';
 import FooterScene from './components/FooterScene';
-import { Compass, Sparkles, Sliders, Menu, Layers } from 'lucide-react';
+
+const SCENE_COMPONENTS = {
+  hero: HeroScene,
+  brief: BriefScene,
+  room: RoomScene,
+  search: SearchScene,
+  people: PeopleScene,
+  sorting: SortingScene,
+  drawers: DrawersScene,
+  footer: FooterScene,
+} as const;
 
 export default function App() {
   const [progress, setProgress] = useState(0);
   const [easedProgress, setEasedProgress] = useState(0);
   const [currentScene, setCurrentScene] = useState<SceneId>('hero');
-  const [showRulerTip, setShowRulerTip] = useState(false);
 
   const progressRef = useRef(0);
   const easedProgressRef = useRef(0);
   const isLoopingRef = useRef(false);
 
-  const SNAP_POINTS = [0, 600, 1350, 3350, 4100, 4900, 5600, 6800, 7700];
-
   // Easing interpolation loop for ultra-smooth animations
   useEffect(() => {
     const lerpSpeed = 0.055; // ultra-smooth premium damping multiplier
+    const snapDistance = 900;
     let animationId: number | null = null;
 
     const updateEasedProgress = () => {
@@ -65,6 +73,18 @@ export default function App() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       progressRef.current = scrollTop;
       setProgress(scrollTop);
+
+      if (Math.abs(scrollTop - easedProgressRef.current) > snapDistance) {
+        if (animationId !== null) {
+          cancelAnimationFrame(animationId);
+          animationId = null;
+        }
+        easedProgressRef.current = scrollTop;
+        setEasedProgress(scrollTop);
+        isLoopingRef.current = false;
+        return;
+      }
+
       wakeLoop();
     };
 
@@ -77,6 +97,7 @@ export default function App() {
       if (animationId !== null) {
         cancelAnimationFrame(animationId);
       }
+      isLoopingRef.current = false;
     };
   }, []);
 
@@ -101,11 +122,8 @@ export default function App() {
   return (
     <div 
       id="composition-viewport-container"
-      className="relative w-full min-h-screen dot-grid bg-paper select-none"
+      className="relative w-full bg-paper select-none"
     >
-      {/* Real scrollable element that creates standard browser scroll height */}
-      <div style={{ height: '8100px' }} className="w-full pointer-events-none" />
-
       {/* Global Header Bar following the Immersive UI design */}
       <header className="fixed top-0 left-0 w-full h-14 flex items-center justify-between px-8 z-50 bg-[#F9F7F2]/80 backdrop-blur-sm border-b border-black/5 pointer-events-auto">
         
@@ -115,7 +133,7 @@ export default function App() {
             d
           </div>
           <span className="font-sans font-semibold tracking-tight text-lg text-black">
-            danfordchris<span className="text-[#cc4539]/80 font-serif italic text-sm">.computer</span>
+            danfordchris<span className="text-[#cc4539]/80 font-serif italic text-sm">.portfolio</span>
           </span>
         </div>
 
@@ -134,22 +152,33 @@ export default function App() {
             onClick={() => navigateToSceneProgress(0)}
             className="px-4 py-1.5 bg-black hover:bg-[#222] text-white text-xs font-sans rounded-full cursor-pointer transition-all active:scale-95 shadow-sm"
           >
-            Reset Desk
+            Back to Top
           </button>
         </div>
 
       </header>
 
-      {/* Layered Viewports Scenes driven by one eased progress parameter */}
-      <main className="fixed inset-0 w-full h-full pointer-events-none z-10" id="staged-scenes-canvas">
-        <HeroScene progress={easedProgress} />
-        <BriefScene progress={easedProgress} />
-        <RoomScene progress={easedProgress} />
-        <SearchScene progress={easedProgress} />
-        <PeopleScene progress={easedProgress} />
-        <SortingScene progress={easedProgress} />
-        <DrawersScene progress={easedProgress} />
-        <FooterScene progress={easedProgress} />
+      {/* Stacked document sections so browser scrolling moves through real page flow */}
+      <main className="relative z-10 dot-grid pt-14 pb-10" id="staged-scenes-canvas">
+        {SCENE_BOUNDS.map((scene) => {
+          const SceneComponent = SCENE_COMPONENTS[scene.id];
+          const sectionHeight = scene.end - scene.start;
+
+          return (
+            <section
+              key={scene.id}
+              id={`scene-${scene.id}`}
+              className="relative w-full"
+              style={{ height: `${sectionHeight}px` }}
+            >
+              <div className="sticky top-0 h-screen overflow-hidden">
+                <div className="relative h-full w-full">
+                  <SceneComponent progress={easedProgress} />
+                </div>
+              </div>
+            </section>
+          );
+        })}
       </main>
 
       {/* Immersive UI Bottom Status Bar */}
@@ -160,7 +189,7 @@ export default function App() {
         </div>
         <div className="flex gap-6 uppercase tracking-widest max-sm:hidden">
           <span>Scene: {currentScene.toUpperCase()}</span>
-          <span>Desk Status: IDLE</span>
+          <span>Portfolio Status: LIVE</span>
         </div>
       </div>
 

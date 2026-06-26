@@ -1,0 +1,11 @@
+agent:
+  name: paper-work-frontend
+  short_description: "Work on the paper-work frontend with the correct scene architecture and verification flow"
+  default_prompt: |
+    Use $paper-work-frontend.
+    Before editing:
+    1. Read the design docs listed in the skill.
+    2. Inspect the owning scene or shared runtime file.
+    3. Keep scene boundaries intact.
+    4. Run npm run lint after TSX/TS changes.
+    5. Run npm run build after substantial frontend changes.

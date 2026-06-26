@@ -30,8 +30,8 @@ interface HeroSceneProps {
 
 export default function HeroScene({ progress }: HeroSceneProps) {
   const [exploded, setExploded] = useState(false);
-  const [showSignIn, setShowSignIn] = useState(false);
-  const [signInSuccess, setSignInSuccess] = useState(false);
+  const [showProfileCard, setShowProfileCard] = useState(false);
+  const [profileCardOpen, setProfileCardOpen] = useState(false);
   const [hoveredCTA, setHoveredCTA] = useState(false);
 
   useEffect(() => {
@@ -183,9 +183,9 @@ export default function HeroScene({ progress }: HeroSceneProps) {
 
         {/* Brand visual header */}
         <div className="flex items-center gap-1.5 mb-2 font-mono text-[10px] uppercase tracking-widest text-ink-muted">
-          <span>A P P L E T</span>
+          <span>P O R T F O L I O</span>
           <span>•</span>
-          <span>D A N F O R D C H R I S</span>
+          <span>D A N F O R D C H R I S S</span>
         </div>
 
         {/* Giant cursive center headline */}
@@ -195,14 +195,14 @@ export default function HeroScene({ progress }: HeroSceneProps) {
             animation: 'text-letter-spread 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both'
           }}
         >
-          <span className="inline-block hover:translate-y-[-4px] transition-transform duration-200">Y</span>our mail,
+          <span className="inline-block hover:translate-y-[-4px] transition-transform duration-200">P</span>roducts,
           <br />
-          <span>delivered in clean drawers.</span>
+          <span>systems, and apps that ship.</span>
         </div>
 
         {/* Immersive UI Styled CTA Button */}
         <button
-          onClick={() => setShowSignIn(true)}
+          onClick={() => setShowProfileCard(true)}
           onMouseEnter={() => setHoveredCTA(true)}
           onMouseLeave={() => setHoveredCTA(false)}
           id="btn-got-mail-cta"
@@ -218,20 +218,20 @@ export default function HeroScene({ progress }: HeroSceneProps) {
             <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white">
               <span className="font-serif text-xs italic font-bold">d</span>
             </div>
-            <span>Got Mail?</span>
+            <span>Open Portfolio</span>
             <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 text-zinc-500" />
           </span>
         </button>
 
         {/* Scroll helper nudge in index style */}
         <div className="mt-10 flex flex-col items-center gap-1 font-mono text-[9px] text-zinc-400 tracking-wider">
-          <span>VIRTUAL SCROLL OR FLICK</span>
+          <span>SCROLL THROUGH SELECTED WORK</span>
           <div className="w-[1px] h-6 bg-zinc-300 animate-pulse mt-1" />
         </div>
       </div>
 
-      {/* Google Sign-In Ledger Frame modal dialog */}
-      {showSignIn && (
+      {/* Portfolio dossier card */}
+      {showProfileCard && (
         <div className="fixed inset-0 bg-ink/30 backdrop-blur-sm z-50 flex items-center justify-center p-4 pointer-events-auto">
           <div 
             className="bg-[#faf8f4] border-[3px] border-double border-zinc-700 rounded-lg p-6 max-w-sm w-full shadow-2xl relative rotate-[-1deg]"
@@ -245,8 +245,8 @@ export default function HeroScene({ progress }: HeroSceneProps) {
 
             <button 
               onClick={() => {
-                setShowSignIn(false);
-                setSignInSuccess(false);
+                setShowProfileCard(false);
+                setProfileCardOpen(false);
               }}
               className="absolute top-3 right-3 p-1 rounded-full hover:bg-neutral-200 text-zinc-500 hover:text-ink cursor-pointer"
             >
@@ -259,71 +259,64 @@ export default function HeroScene({ progress }: HeroSceneProps) {
                 className="stamp-ink text-[10px] text-stamp-red"
                 style={{ transform: 'rotate(-12deg)' }}
               >
-                Inbound Mail
+                Selected Work
               </div>
               <div className="font-mono text-[9px] text-zinc-500 text-right">
-                POSTAGE PAID<br />
-                PERMIT #492
+                DOSSIER READY<br />
+                PORTFOLIO INDEX
               </div>
             </div>
 
             <div className="mb-6">
               <h2 className="font-serif text-2xl font-semibold tracking-tight text-ink mb-1.5">
-                Google Portal
+                Danford Chriss
               </h2>
               <p className="font-serif italic text-sm text-zinc-600">
-                "Welcome to the desks of danfordchris.computer."
+                "Full stack, DevOps, and mobile engineer building practical products."
               </p>
             </div>
 
-            {/* Custom Google Sign In layout */}
+            {/* Portfolio snapshot */}
             <div className="flex flex-col gap-3">
-              {signInSuccess ? (
+              {profileCardOpen ? (
                 <div className="flex flex-col items-center justify-center py-6 text-center animate-pulse">
                   <CheckCircle className="w-9 h-9 text-emerald-600 mb-2" />
-                  <span className="text-sm font-semibold text-emerald-800">Connection Successful!</span>
+                  <span className="text-sm font-semibold text-emerald-800">Portfolio Opened</span>
                   <p className="text-[10px] font-mono text-zinc-500 mt-1 max-w-[220px] leading-relaxed">
-                    Welcome, jurvisdanford329@gmail.com. We have initialized your stationery desk.
+                    Focus on IPF OS, published mobile apps, and the work history across IPF, freelancing, and startup builds.
                   </p>
                 </div>
               ) : (
                 <button
                   onClick={() => {
-                    setSignInSuccess(true);
+                    setProfileCardOpen(true);
                     setTimeout(() => {
-                      setShowSignIn(false);
-                      setSignInSuccess(false);
+                      setShowProfileCard(false);
+                      setProfileCardOpen(false);
                     }, 2400);
                   }}
                   className="group relative w-full flex items-center justify-center gap-4 py-4 px-6 bg-white hover:bg-neutral-50 border-2 border-dashed border-black/15 hover:border-black/35 rounded-xl font-sans text-sm font-semibold text-zinc-700 cursor-pointer transition-all active:scale-95"
                 >
-                  {/* Google minimalist colored G */}
-                  <div className="w-5 h-5 flex items-center justify-center">
-                    <svg className="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                    </svg>
+                  <div className="w-5 h-5 flex items-center justify-center rounded-full bg-black text-white text-[10px] font-bold">
+                    d
                   </div>
-                  <span className="text-sm font-medium tracking-wide">Sign in with Google</span>
+                  <span className="text-sm font-medium tracking-wide">Read profile snapshot</span>
                 </button>
               )}
 
               <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400 my-2">
                 <div className="h-[1px] bg-zinc-200 flex-1" />
-                <span className="px-2">SECURE PORTAL</span>
+                <span className="px-2">PORTFOLIO OVERVIEW</span>
                 <div className="h-[1px] bg-zinc-200 flex-1" />
               </div>
 
               <div className="text-[10px] font-mono text-zinc-500 leading-relaxed text-center">
-                This simulated experience holds no session records.
-                Signing in will lead to your custom persistent dashboard widget.
+                Current signals: enterprise product delivery, mobile apps in production, web builds, and a career path spanning product, backend, and DevOps work.
               </div>
             </div>
 
             <div className="mt-6 pt-4 border-t border-dashed border-zinc-200 text-center font-serif italic text-xs text-zinc-500">
-              Feather Computer, Inc.
+              Danford Chriss Portfolio
             </div>
           </div>
         </div>

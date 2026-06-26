@@ -112,9 +112,9 @@ export default function SearchScene({ progress }: SearchSceneProps) {
       {/* Callout section text */}
       <div className="text-center mb-10 max-w-xl">
         <span className="text-xs font-mono tracking-widest uppercase mb-2 block opacity-40">Search</span>
-        <h2 className="text-3xl font-serif tracking-tight text-[#111] mb-2">Save time and sanity.</h2>
+        <h2 className="text-3xl font-serif tracking-tight text-[#111] mb-2">Ask about any build.</h2>
         <p className="font-sans text-xs text-zinc-500 uppercase tracking-wider">
-          A single query searches your physical cards, envelopes, and records.
+          A single query pulls products, roles, and portfolio proof into one place.
         </p>
       </div>
 

@@ -168,9 +168,9 @@ export default function PeopleScene({ progress }: PeopleSceneProps) {
       {/* Callout top labels */}
       <div className="text-center mb-10 max-w-xl">
         <span className="text-xs font-mono tracking-widest uppercase mb-2 block opacity-40">People Wiki</span>
-        <h2 className="text-3xl font-serif tracking-tight text-[#111] mb-2">Connect effortlessly.</h2>
+        <h2 className="text-3xl font-serif tracking-tight text-[#111] mb-2">The work behind the work.</h2>
         <p className="font-sans text-xs text-zinc-500 uppercase tracking-wider">
-          A physical Rolodex containing context, logs, and linkages per person.
+          A rotating dossier of roles, chapters, and public signals that shape the portfolio.
         </p>
       </div>
 

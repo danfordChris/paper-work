@@ -38,7 +38,7 @@ export interface RoomRow {
   jobTitle: string;
   compensation: string;
   company: string;
-  status: 'Interview' | 'Applied' | 'Rejected' | 'Accepted';
+  status: 'Live' | 'Active' | 'Case Study' | 'Archive';
 }
 
 export interface PeopleContact {
