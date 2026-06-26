@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  --font-serif: "Times New Roman", "Lora", "Playfair Display", serif;
+
+  --color-paper: #F9F7F2;
+  --color-paper-dark: #F2EDE4;
+  --color-paper-shadow: rgba(0, 0, 0, 0.05);
+  --color-ink: #111111;
+  --color-ink-muted: #666666;
+  --color-stamp-red: #cc4539;
+  --color-stamp-blue: #386dbd;
+  --color-stamp-green: #378b60;
+  --color-manila: #e5e0d3;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-y: auto;
+    overflow-x: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Hide scrollbars for slick visual layout */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Custom virtual scroll desk layout */
+.dot-grid {
+  background-size: 28px 28px;
+  background-image: radial-gradient(#E2E0D9 1.5px, transparent 1.5px);
+}
+
+/* Stamp wiggle animations */
+@keyframes stamp-down {
+  0% {
+    transform: scale(1.6) rotate(-15deg);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  70% {
+    transform: scale(0.95) rotate(2deg);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes sticker-stamp {
+  0% {
+    transform: scale(1.8) rotate(25deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(-4deg);
+    opacity: 1;
+  }
+}
+
+@keyframes drift-feather {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(4deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes text-letter-spread {
+  0% {
+    letter-spacing: -0.2em;
+    opacity: 0;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+@keyframes orbit-hover {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(3px, -3px) rotate(0.4deg);
+  }
+  50% {
+    transform: translate(-2px, 2px) rotate(-0.3deg);
+  }
+  75% {
+    transform: translate(-3px, -2px) rotate(0.2deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.animate-stamp {
+  animation: stamp-down 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.animate-sticker {
+  animation: sticker-stamp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.animate-feather {
+  animation: drift-feather 1.8s ease-in-out infinite;
+}
+
+.animate-orbit-hover-slow {
+  animation: orbit-hover 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+/* Torn paper, tags, receipts and staples */
+.paper-tear {
+  position: relative;
+}
+.paper-tear::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-image: linear-gradient(135deg, transparent 75%, var(--color-paper) 75%),
+                    linear-gradient(225deg, transparent 75%, var(--color-paper) 75%);
+  background-size: 6px 12px;
+  background-position: 0 100%;
+}
+
+.staple {
+  position: absolute;
+  width: 24px;
+  height: 6px;
+  background-color: #ccd0d5;
+  border-top: 1px solid #99a0a8;
+  border-bottom: 2px solid #555c65;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+  transform: rotate(-3deg);
+  z-index: 10;
+}
+
+.coffee-stain {
+  border-radius: 50%;
+  border: 2px solid rgba(139, 90, 43, 0.05);
+  filter: blur(1px);
+}
+
+/* Rubber stamp ink text style */
+.stamp-ink {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 2px solid currentColor;
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0.85;
+  transform: rotate(-10deg);
+  display: inline-block;
+  mask-image: radial-gradient(circle, #000 60%, transparent 100%);
+}
+
+/* Scrollbar insideAllowedScrollRegions */
+.allowed-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.allowed-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.allowed-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-manila);
+  border-radius: 2px;
+}
+.allowed-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-muted);
+}
+

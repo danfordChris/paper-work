@@ -1,0 +1,6 @@
+{
+  "name": "danfordchris",
+  "description": "A highly polished, source-faithful interactive recreation of the danfordchris landing page with virtual scroll, staged scenes, and a custom stationery paper aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
